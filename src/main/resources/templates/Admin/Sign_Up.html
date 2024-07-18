@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="admin/dashboard :: header">
+<body>
+<!-- login page start-->
+<div class="container-fluid p-0">
+    <div class="row m-0">
+        <div class="col-12 p-0">
+            <div class="login-card">
+                <div>
+                    <div><a class="logo" href="#"><img class="img-fluid for-light" src="/Admin/images/LogoColoShop.png" alt="looginpage"></a></div>
+                    <div class="login-main">
+                        <form class="theme-form" action="/save_SignUp" method="post">
+                            <h4>Create your account</h4>
+                            <p>Enter your personal details to create account</p>
+
+                            <div class="form-group">
+                                <label class="col-form-label pt-0">Your Name</label>
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <input class="form-control" type="text" required="" placeholder="First name" name="firstName">
+                                    </div>
+                                    <div class="col-6">
+                                        <input class="form-control" type="text" required="" placeholder="Last name" name="lastName">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">Email Address</label>
+                                <input class="form-control" type="email" required="" placeholder="Test@gmail.com" name="Email">
+                            </div>
+                            <div class="col">
+                                    <div th:if="${error}" >
+                                    <p th:text="${error}" class="alert-danger text-white"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">Password</label>
+                                <div class="form-input position-relative">
+                                    <input id="passwordInput" class="form-control" type="password" name="pass" required="" placeholder="*********">
+                                    <div class="show-hide">
+                                        <span id="togglePassword" class="Show"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-0">
+                                 <button class="btn btn-primary btn-block w-100" type="submit">Create Account</button>
+                            </div>
+                            <h6 class="text-muted mt-4 or">Or signup with</h6>
+                            <p class="mt-4 mb-0">Already have an account?<a class="ms-2" href="login.html">Sign in</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="admin/dashboard :: script"></div>
+    <script>
+        document.getElementById("togglePassword").addEventListener("click", function() {
+            var passwordInput = document.getElementById("passwordInput");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                document.getElementById("togglePassword").textContent = "";
+            } else {
+                passwordInput.type = "password";
+                document.getElementById("togglePassword").textContent = "";
+            }
+        });
+    </script>
+</div>
+
+</body>
+</html>
